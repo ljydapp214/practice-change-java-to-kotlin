@@ -1,0 +1,20 @@
+root = true
+
+[*]
+indent_size = tab
+indent_style = space
+
+tab_width = 4
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[*.{kt,kts}]
+ktlint_code_style = ktlint_official
+ktlint_standard_annotation = enabled
+ktlint_standard_block-comment-initial-star-alignment = enabled
+ktlint_standard_function-expression-body = enabled
+ktlint_standard_no-blank-line-in-list = enabled
+ktlint_standard_no-wildcard-imports = enabled
+ktlint_standard_no-unused-imports = enabled
