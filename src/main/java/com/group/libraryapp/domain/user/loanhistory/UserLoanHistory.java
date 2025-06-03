@@ -9,6 +9,8 @@ import jakarta.persistence.ManyToOne;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
 
+import org.jetbrains.annotations.NotNull;
+
 @Entity
 public class UserLoanHistory {
 
@@ -33,12 +35,17 @@ public class UserLoanHistory {
     this.isReturn = isReturn;
   }
 
-  public String getBookName() {
-    return this.bookName;
-  }
-
   public void doReturn() {
     this.isReturn = true;
   }
 
+  @NotNull
+  public String getBookName() {
+    return this.bookName;
+  }
+
+  @NotNull
+  public User getUser() {
+    return user;
+  }
 }
