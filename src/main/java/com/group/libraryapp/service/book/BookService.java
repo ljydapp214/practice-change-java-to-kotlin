@@ -1,7 +1,7 @@
 package com.group.libraryapp.service.book;
 
-import com.group.libraryapp.domain.book.Book;
-import com.group.libraryapp.domain.book.BookRepository;
+import com.group.libraryapp.book.Book;
+import com.group.libraryapp.book.BookRepository;
 import com.group.libraryapp.domain.user.User;
 import com.group.libraryapp.domain.user.UserRepository;
 import com.group.libraryapp.domain.user.loanhistory.UserLoanHistoryRepository;
@@ -18,17 +18,17 @@ public class BookService {
   private final UserRepository userRepository;
   private final UserLoanHistoryRepository userLoanHistoryRepository;
 
-  public BookService(
-      BookRepository bookRepository,
-      UserRepository userRepository,
-      UserLoanHistoryRepository userLoanHistoryRepository
-  ) {
-    this.bookRepository = bookRepository;
-    this.userRepository = userRepository;
-    this.userLoanHistoryRepository = userLoanHistoryRepository;
-  }
+    public BookService(
+        BookRepository bookRepository,
+        UserRepository userRepository,
+        UserLoanHistoryRepository userLoanHistoryRepository
+    ) {
+        this.bookRepository = bookRepository;
+        this.userRepository = userRepository;
+        this.userLoanHistoryRepository = userLoanHistoryRepository;
+    }
 
-  @Transactional
+    @Transactional
   public void saveBook(BookRequest request) {
     Book newBook = new Book(request.getName());
     bookRepository.save(newBook);
@@ -36,7 +36,8 @@ public class BookService {
 
   @Transactional
   public void loanBook(BookLoanRequest request) {
-    Book book = bookRepository.findByName(request.getBookName()).orElseThrow(IllegalArgumentException::new);
+      Book book = bookRepository.findByName(request.getBookName())
+          .orElseThrow(() -> new IllegalArgumentException("해당 이름으로 책 못찾음"));
     if (userLoanHistoryRepository.findByBookNameAndIsReturn(request.getBookName(), false) != null) {
       throw new IllegalArgumentException("진작 대출되어 있는 책입니다");
     }
