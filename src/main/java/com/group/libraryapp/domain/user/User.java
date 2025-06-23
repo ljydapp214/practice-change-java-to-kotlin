@@ -1,18 +1,24 @@
 package com.group.libraryapp.domain.user;
 
-import com.group.libraryapp.domain.book.Book;
+import com.group.libraryapp.book.Book;
 import com.group.libraryapp.domain.user.loanhistory.UserLoanHistory;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
 @Entity
+@Table(name = "users")
 public class User {
 
   @Id
