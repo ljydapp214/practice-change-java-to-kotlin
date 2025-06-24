@@ -1,4 +1,4 @@
-package com.group.libraryapp.book
+package com.group.libraryapp.domain.book
 
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
@@ -11,13 +11,9 @@ import java.time.LocalDateTime
 @Entity
 @Table(name = "book")
 class Book(
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private val id: Long? = null,
-    @Column(name = "name", nullable = false)
-    var name: String,
-    @Column(name = "type", nullable = false)
-    private val type: String = "novel",
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) val id: Long? = null,
+    @Column(name = "name", nullable = false) var name: String,
+    @Column(name = "type", nullable = false) val type: String = "novel",
 ) {
     @Column(nullable = false)
     val createdAt: LocalDateTime = LocalDateTime.now()
