@@ -1,6 +1,6 @@
 package com.group.libraryapp.domain.user;
 
-import com.group.libraryapp.book.Book;
+import com.group.libraryapp.domain.book.Book;
 import com.group.libraryapp.domain.user.loanhistory.UserLoanHistory;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -50,7 +50,7 @@ public class User {
   }
 
   public void loanBook(Book book) {
-    this.userLoanHistories.add(new UserLoanHistory(this, book.getName(), false));
+    this.userLoanHistories.add(new UserLoanHistory(this, book.getName(), false, null));
   }
 
   public void returnBook(String bookName) {
