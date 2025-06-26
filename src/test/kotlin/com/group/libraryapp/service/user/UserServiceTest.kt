@@ -1,7 +1,7 @@
 package com.group.libraryapp.service.user
 
-import com.group.libraryapp.domain.user.User
 import com.group.libraryapp.domain.user.UserRepository
+import com.group.libraryapp.domain.user.loanhistory.User
 import com.group.libraryapp.domain.user.loanhistory.UserLoanHistoryRepository
 import com.group.libraryapp.dto.user.request.UserCreateRequest
 import com.group.libraryapp.dto.user.request.UserUpdateRequest
@@ -93,7 +93,7 @@ class UserServiceTest
         @DisplayName("대출 기록이 없는 유저도 응답에 포함된다")
         fun getUserLoanHistoriesTest1() {
 //    // given
-//    userRepository.save(User("A", null))
+            userRepository.save(User("A", null))
 //
 //    // when
 //    val results = userService.getUserLoanHistories()
@@ -108,7 +108,7 @@ class UserServiceTest
         @DisplayName("대출 기록이 많은 유저의 응답이 정상 동작한다")
         fun getUserLoanHistoriesTest2() {
 //    // given
-//    val savedUser = userRepository.save(User("A", null))
+            val savedUser = userRepository.save(User("A", null))
 //    userLoanHistoryRepository.saveAll(listOf(
 //      UserLoanHistory.fixture(savedUser, "책1", UserLoanStatus.LOANED),
 //      UserLoanHistory.fixture(savedUser, "책2", UserLoanStatus.LOANED),

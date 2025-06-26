@@ -63,7 +63,7 @@ class CalculatorTest {
                 .isInstanceOf(IllegalArgumentException::class.java)
 
             assertThrows<IllegalArgumentException> { calculator.divide(zero) }
-                .apply { assertThat(message).isEqualTo("Cannot divide by zero") }
+                .apply { assertThat(message).isEqualTo("0으로는 수를 나눌 수 없습니다.") }
         }
     }
 }
