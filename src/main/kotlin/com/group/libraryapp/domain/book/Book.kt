@@ -23,4 +23,8 @@ class Book(
     }
 
     constructor(name: String) : this(null, name, "novel")
+
+    companion object {
+        fun fixture(bookName: String): Book = Book(bookName)
+    }
 }
