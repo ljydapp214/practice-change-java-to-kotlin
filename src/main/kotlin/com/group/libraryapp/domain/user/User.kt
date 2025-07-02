@@ -1,14 +1,17 @@
-package com.group.libraryapp.domain.user.loanhistory
+package com.group.libraryapp.domain.user
 
 import com.group.libraryapp.domain.book.Book
+import com.group.libraryapp.domain.user.loanhistory.UserLoanHistory
 import jakarta.persistence.CascadeType
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
 import jakarta.persistence.OneToMany
+import jakarta.persistence.Table
 
 @Entity
+@Table(name = "users")
 class User(
     var name: String,
     val age: Int?,

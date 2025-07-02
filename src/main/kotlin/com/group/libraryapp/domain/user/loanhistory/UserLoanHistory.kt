@@ -1,5 +1,6 @@
 package com.group.libraryapp.domain.user.loanhistory
 
+import com.group.libraryapp.domain.user.User
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
