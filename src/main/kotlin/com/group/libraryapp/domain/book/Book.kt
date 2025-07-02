@@ -11,9 +11,12 @@ import java.time.LocalDateTime
 @Entity
 @Table(name = "book")
 class Book(
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) val id: Long? = null,
-    @Column(name = "name", nullable = false) var name: String,
-    @Column(name = "type", nullable = false) val type: String = "novel",
+    @Column(name = "name", nullable = false)
+    var name: String,
+    @Column(name = "type", nullable = false)
+    val type: String = "novel",
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    val id: Long? = null,
 ) {
     @Column(nullable = false)
     val createdAt: LocalDateTime = LocalDateTime.now()
@@ -22,7 +25,9 @@ class Book(
         require(!name.isBlank()) { "이름은 비어있을 수 없습니다." }
     }
 
-    constructor(name: String) : this(null, name, "novel")
+    constructor(name: String) : this(name, "novel", null)
+
+    constructor(name: String, type: String) : this(name, type, null)
 
     companion object {
         fun fixture(bookName: String): Book = Book(bookName)
