@@ -23,7 +23,7 @@ class UserService(
     fun getUsers(): List<UserResponse> =
         userRepository
             .findAll()
-            .map(::UserResponse)
+            .map { a -> UserResponse.of(a) }
 //            .map { UserResponse(it) } }
 //            .map { user -> UserResponse(user) }
 
