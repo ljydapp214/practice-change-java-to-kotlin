@@ -2,6 +2,7 @@ package com.group.libraryapp.domain.user
 
 import com.group.libraryapp.domain.book.Book
 import com.group.libraryapp.domain.user.loanhistory.UserLoanHistory
+import com.group.libraryapp.domain.user.loanhistory.UserStatus
 import jakarta.persistence.CascadeType
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
@@ -33,7 +34,7 @@ class User(
 
     fun loanBook(book: Book) {
         this.userLoanHistories
-            .add(UserLoanHistory(this, book.name, false))
+            .add(UserLoanHistory(this, book.name, UserStatus.LOANED))
     }
 
     fun returnBook(bookName: String) {

@@ -2,6 +2,8 @@ package com.group.libraryapp.domain.user.loanhistory
 
 import com.group.libraryapp.domain.user.User
 import jakarta.persistence.Entity
+import jakarta.persistence.EnumType
+import jakarta.persistence.Enumerated
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
@@ -12,19 +14,21 @@ class UserLoanHistory(
     @ManyToOne
     val user: User,
     val bookName: String,
-    var isReturn: Boolean,
+    @Enumerated(value = EnumType.STRING)
+    var status: UserStatus = UserStatus.LOANED,
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
 ) {
     fun doReturn() {
-        this.isReturn = true
+        this.status = UserStatus.RETURNED
     }
 
     companion object {
         fun fixture(
             borrower: User,
             bookName: String,
-        ): UserLoanHistory = UserLoanHistory(borrower, bookName, false, null)
+            status: UserStatus,
+        ): UserLoanHistory = UserLoanHistory(borrower, bookName, status, null)
     }
 }
